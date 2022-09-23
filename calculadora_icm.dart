@@ -23,4 +23,3 @@ void main() {
   print("O ICM da Bruxa é");
   print(icm_bruxa.toStringAsFixed(2));
 }
-
