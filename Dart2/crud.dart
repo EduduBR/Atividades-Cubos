@@ -5,7 +5,7 @@ void main() {
   final trablist = List.from(listainicial);
   if (trablist.length > 5) {
     if (trablist.first == 0 && trablist.last == 10) {
-      trablist.removeRange(1, trablist.length - 5);
+      trablist.removeRange(1, (trablist.length +1)- 5);
     } else if (trablist[3] == 3) {
       trablist.first = 1;
       trablist.last = 9;
