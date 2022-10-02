@@ -1,6 +1,6 @@
 void main() {
   /// O programa deve calcular as cedulas apartir de 2 até 100
-  final valor = 300;
+  final valor = 361;
 
   /// contador de cedulas
   var ced100 = 0;
