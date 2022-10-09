@@ -22,12 +22,12 @@ void main() {
 
   print('O icm de João é $result_joao');
   print('O icm de Maria é $result_maria');
-  print('O icm de Bruxa é $result_bruxa');
+  print('O icm de Bruxa é $result_bruxa\n');
 
-  print('Recomendações:');
+  print('Recomendações:\n');
 
   ///Resultado João
-  if (icm_joao < 18.5) {
+    if (icm_joao < 18.5) {
     print('Joao está abaixo do peso, ainda não achou a cabana de doces');
   } else if (icm_joao < 25) {
     print('João está no peso normal. Parabéns ');
@@ -42,7 +42,7 @@ void main() {
   }
 
   ///Resultado Maria
-  if (icm_maria < 18.5) {
+    if (icm_maria < 18.5) {
     print('Maria está abaixo do peso, ainda não achou a cabana de doces');
   } else if (icm_maria < 25) {
     print('Maria está no peso normal. Parabéns ');
