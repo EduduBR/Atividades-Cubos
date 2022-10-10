@@ -1,120 +1,23 @@
-class Jogador {
-  String name;
-  int saques;
-  int saques_efetivos;
-  int bloqueios;
-  int bloqueios_efetivos;
-  int ataques;
-  int ataques_efetivos;
+import 'players.dart';
 
-  Jogador({
-    required this.name,
-    required this.saques,
-    required this.saques_efetivos,
-    required this.bloqueios,
-    required this.bloqueios_efetivos,
-    required this.ataques,
-    required this.ataques_efetivos,
-  });
-  void acerto() {
-    var result = saques_efetivos * 100 / saques;
-    print('Saque: $saques / $saques_efetivos (${result.toStringAsFixed(1)}%)');
-  }
-
-  void erro() {
-    var block = bloqueios_efetivos * 100 / bloqueios;
-    print(
-        'Bloqueio: $bloqueios/$bloqueios_efetivos (${block.toStringAsFixed(1)}%)');
-  }
-
-  void nice() {
-    var atack = ataques_efetivos * 100 / ataques;
-    print('Ataque: $ataques_efetivos/$ataques (${atack.toStringAsFixed(1)}%)');
-  }
+extension porcentagem on num {
+  double porcento(other) => this * 100 / (other);
 }
 
 void main() {
-  Jogador player1 = new Jogador(
-      name: 'Maurício',
-      saques: 8,
-      saques_efetivos: 4,
-      bloqueios: 18,
-      bloqueios_efetivos: 12,
-      ataques: 2,
-      ataques_efetivos: 1);
-  print('Jogador: ${player1.name}');
-  player1.acerto();
-  player1.erro();
-  player1.nice();
-  print('<<<<<<<<<<<<<<<<<<<<<<<');
+  Jogadores player1 = Jogadores('Maurício', 8, 4, 18, 12, 2, 1);
+  Jogadores player2 = Jogadores('Marcelo', 15, 10, 8, 5, 21, 18);
+  Jogadores player3 = Jogadores('Tande', 11, 6, 14, 12, 15, 11);
+  Jogadores player4 = Jogadores('Giovane', 11, 5, 10, 8, 18, 12);
+  Jogadores player5 = Jogadores('Paulo', 9, 2, 15, 12, 15, 10);
+  Jogadores player6 = Jogadores('Carlos', 10, 3, 10, 8, 12, 8);
 
-  Jogador player2 = new Jogador(
-      name: 'Marcelo',
-      saques: 15,
-      saques_efetivos: 10,
-      bloqueios: 8,
-      bloqueios_efetivos: 5,
-      ataques: 21,
-      ataques_efetivos: 18);
-  print('Jogador: ${player2.name}');
-  player2.acerto();
-  player2.erro();
-  player2.nice();
-  print('>>>>>>>>>>>>>>>>>>>>>>>');
-
-  Jogador player3 = new Jogador(
-      name: 'Tande',
-      saques: 11,
-      saques_efetivos: 6,
-      bloqueios: 14,
-      bloqueios_efetivos: 12,
-      ataques: 15,
-      ataques_efetivos: 11);
-  print('Jogador: ${player3.name}');
-  player3.acerto();
-  player3.erro();
-  player3.nice();
-  print('<<<<<<<<<<<<<<<<<<<<<<<');
-
-  Jogador player4 = new Jogador(
-      name: 'Giovane',
-      saques: 11,
-      saques_efetivos: 5,
-      bloqueios: 10,
-      bloqueios_efetivos: 8,
-      ataques: 18,
-      ataques_efetivos: 12);
-  print('Jogador: ${player4.name}');
-  player4.acerto();
-  player4.erro();
-  player4.nice();
-  print('>>>>>>>>>>>>>>>>>>>>>>>');
-  Jogador player5 = new Jogador(
-      name: 'Paulo',
-      saques: 9,
-      saques_efetivos: 2,
-      bloqueios: 15,
-      bloqueios_efetivos: 12,
-      ataques: 15,
-      ataques_efetivos: 10);
-  print('Jogador: ${player5.name}');
-  player5.acerto();
-  player5.erro();
-  player5.nice();
-  print('<<<<<<<<<<<<<<<<<<<<<<<');
-  Jogador player6 = new Jogador(
-      name: 'Carlos',
-      saques: 10,
-      saques_efetivos: 3,
-      bloqueios: 10,
-      bloqueios_efetivos: 8,
-      ataques: 12,
-      ataques_efetivos: 8);
-  print('Jogador: ${player6.name}');
-  player6.acerto();
-  player6.erro();
-  player6.nice();
-  print('>>>>>>>>>>>>>>>>>>>>>>>');
+  player1.resultado();
+  player2.resultado();
+  player3.resultado();
+  player4.resultado();
+  player5.resultado();
+  player6.resultado();
 
   var team_attack = player1.ataques +
       player2.ataques +
@@ -131,7 +34,6 @@ void main() {
       player6.ataques_efetivos;
 
   var team_block = player1.bloqueios +
-      player2.bloqueios +
       player3.bloqueios +
       player4.bloqueios +
       player5.bloqueios +
@@ -158,16 +60,14 @@ void main() {
       player5.saques_efetivos +
       player6.saques_efetivos;
 
-  var saques_point = (lance_bons * 100) / lance;
-  var block_point = (effective_block * 100) / team_block;
-  var atack_point = (effective_attack * 100) / team_attack;
+  num result_atack = effective_attack.porcento(team_attack);
+  num result_block = effective_block.porcento(team_block);
+  num result_saques = lance_bons.porcento(lance);
 
-  print('<<<<<<<<<<<<<<<<<<<<<<<');
-  print('Resultado (equipe)');
-  print(
-      'Pontos de Saque: $lance_bons/$lance (${saques_point.toStringAsFixed(1)}%)');
-  print(
-      'Pontos de Bloqueio: $effective_block/$team_block (${block_point.toStringAsFixed(1)}%)');
-  print(
-      'Pontos de Ataque: $effective_attack/$team_attack (${atack_point.toStringAsFixed(1)}%)');
+  print('=' * 35);
+  print('Resultado da equipe');
+  print('Pontos de Saque: $lance_bons/$lance (${result_saques.toStringAsFixed(1)}%)');
+  print('Pontos de Bloqueio: $effective_block/$team_block (${result_block.toStringAsFixed(1)}%)');
+  print('Pontos de Ataque: $effective_attack/$team_attack (${result_atack.toStringAsFixed(1)}%)');
+   print('=' * 35);
 }
