@@ -11,24 +11,24 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:myhomepage(),
+      home:MyHomePage(),
    );
   }
 }
 
-class myhomepage extends StatelessWidget {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exercicos 1 Flutter'),
+        title:const Text('Exercicos 1 Flutter'),
       ),
       body: Center(
           child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 4, 47, 240),
-          Color.fromARGB(255, 76, 121, 247)
+        const  Color.fromARGB(255, 4, 47, 240),
+         const Color.fromARGB(255, 76, 121, 247)
         ])),
         child: Center(
           child: Text(
