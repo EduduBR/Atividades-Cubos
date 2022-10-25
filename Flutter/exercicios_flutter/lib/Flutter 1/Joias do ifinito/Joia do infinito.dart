@@ -1,4 +1,4 @@
-import 'package:exercicios_flutter/componentes.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           elevation: 30.00,
-          backgroundColor: Colors.blue),
+          backgroundColor: Color.fromARGB(255, 28, 96, 151)),
       body: Column(
         children: [
           Row(
